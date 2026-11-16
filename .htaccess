@@ -1,0 +1,9 @@
+# Si le document root OVH pointe sur la racine du projet (et non /public),
+# redirige tout le trafic HTTP vers /public tout en bloquant .env / app / etc.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^public/ - [L]
+  RewriteRule ^\.env - [F,L]
+  RewriteRule ^(app|bin|config|database|lang|resources|storage|vendor)/ - [F,L]
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

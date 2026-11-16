@@ -1,0 +1,422 @@
+@import "tailwindcss" source(none);
+@source "../../app/Views/layouts/admin.php";
+@source "../../app/Views/layouts/admin-guest.php";
+@source "../../app/Views/admin/**/*.php";
+@source "../../app/Views/components/**/*.php";
+@import "./tokens.css";
+
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/figtree.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/figtree-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply m-0 bg-cream-2 font-sans text-ink;
+  }
+  a {
+    @apply text-forest;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold;
+  }
+}
+
+@layer components {
+  .ui-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-forest px-3.5 py-2 text-sm font-semibold text-cream-2 no-underline transition hover:bg-forest-mid disabled:opacity-50;
+  }
+  .ui-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-3.5 py-2 text-sm font-semibold text-forest no-underline transition hover:bg-cream;
+  }
+  .ui-btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-danger px-3.5 py-2 text-sm font-semibold text-white no-underline transition hover:opacity-90;
+  }
+  .ui-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-cream-2/90 no-underline transition hover:bg-white/10;
+  }
+  .ui-input,
+  .ui-select,
+  .ui-textarea {
+    @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink shadow-sm transition placeholder:text-muted/70 focus:border-forest focus:ring-2 focus:ring-forest/15;
+  }
+  .ui-textarea {
+    @apply min-h-24;
+  }
+  .ui-label {
+    @apply grid gap-1.5 text-sm font-semibold text-ink;
+  }
+  .ui-label-hint {
+    @apply text-xs font-normal text-muted;
+  }
+  .ui-card {
+    @apply rounded-lg border border-line bg-white p-4 shadow-soft;
+  }
+  .ui-alert {
+    @apply mb-4 rounded-md border px-3.5 py-2.5 text-sm;
+  }
+  .ui-alert-ok {
+    @apply border-forest/20 bg-[#e6efe8] text-forest-dark;
+  }
+  .ui-alert-error {
+    @apply border-danger/20 bg-[#f8e8e6] text-danger;
+  }
+  .ui-badge {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
+  }
+  .ui-badge-ok {
+    @apply bg-[#e6efe8] text-forest;
+  }
+  .ui-badge-muted {
+    @apply bg-cream-3 text-muted;
+  }
+  .ui-badge-warn {
+    @apply bg-[#f5ead6] text-[#8a5a12];
+  }
+  .ui-badge-danger {
+    @apply bg-[#f8e8e6] text-danger;
+  }
+  .ui-table-wrap {
+    @apply overflow-x-auto rounded-lg border border-line bg-white shadow-soft;
+  }
+  .ui-table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+  .ui-table th {
+    @apply border-b border-line bg-cream/80 px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .ui-table td {
+    @apply border-b border-line px-3 py-2.5 align-top text-ink;
+  }
+  .ui-table tr:last-child td {
+    @apply border-b-0;
+  }
+  .reorder-row {
+    @apply cursor-grab;
+  }
+  .reorder-row.is-dragging {
+    @apply cursor-grabbing opacity-60;
+  }
+  .reorder-row.is-drag-over {
+    @apply bg-cream;
+  }
+  .reorder-cell {
+    @apply whitespace-nowrap;
+  }
+  .reorder-controls {
+    @apply flex items-center gap-1;
+  }
+  .reorder-handle {
+    @apply cursor-grab rounded border border-transparent px-1 py-0.5 text-sm leading-none text-muted hover:border-line hover:bg-cream;
+  }
+  .reorder-btn {
+    @apply rounded border border-line bg-white px-1.5 py-0.5 text-[0.65rem] leading-none text-forest hover:bg-cream;
+  }
+  .reorder-rank {
+    @apply ml-1 min-w-[1.25rem] text-center;
+  }
+  .text-ok {
+    @apply text-forest;
+  }
+  .icon-preview {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-line bg-cream text-forest;
+  }
+  .icon-preview svg {
+    width: 1rem;
+    height: 1rem;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+  .ui-empty {
+    @apply rounded-lg border border-dashed border-line bg-white px-4 py-10 text-center text-sm text-muted;
+  }
+  .admin-nav-link {
+    @apply flex items-center rounded-md px-2.5 py-2 text-sm text-cream-2/85 no-underline transition hover:bg-white/10 hover:text-white;
+  }
+  .admin-nav-link-active {
+    @apply bg-white/12 font-semibold text-white;
+  }
+  .admin-nav-group {
+    @apply mb-1 mt-4 px-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-cream-2/45;
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .richtext {
+    @apply overflow-hidden rounded-md border border-line bg-white shadow-sm;
+  }
+  .richtext-toolbar {
+    @apply flex flex-wrap gap-1 border-b border-line bg-cream/70 p-2;
+  }
+  .richtext-btn {
+    @apply rounded border border-line bg-white px-2 py-1 text-xs font-semibold text-forest transition hover:bg-cream;
+  }
+  .richtext-editor {
+    @apply min-h-40 px-3 py-2 text-sm leading-relaxed text-ink outline-none;
+  }
+  .richtext-editor:focus {
+    @apply ring-2 ring-inset ring-forest/15;
+  }
+  .richtext-editor h2 {
+    @apply mb-2 mt-3 text-lg font-semibold text-forest;
+  }
+  .richtext-editor ul {
+    @apply my-2 list-disc pl-5;
+  }
+  .richtext-editor ol {
+    @apply my-2 list-decimal pl-5;
+  }
+  .richtext-editor img {
+    @apply my-2 max-h-48 rounded-md;
+  }
+
+  .ui-accordion-summary {
+    @apply cursor-pointer list-none text-sm font-semibold text-forest;
+  }
+  .ui-accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+  .ui-accordion-body {
+    @apply mt-4;
+  }
+
+  .media-preview-box {
+    @apply flex h-28 w-40 items-center justify-center overflow-hidden rounded-md border border-dashed border-line bg-cream/50;
+  }
+  .media-preview-img {
+    @apply h-full w-full object-cover;
+  }
+
+  .gallery-thumb {
+    @apply relative h-28 w-36 overflow-hidden rounded-md border border-line bg-cream;
+  }
+  .gallery-thumb-img {
+    @apply h-full w-full object-cover;
+  }
+  .gallery-thumb-actions {
+    @apply absolute inset-x-0 bottom-0 flex justify-center gap-1 bg-forest/70 p-1;
+  }
+  .gallery-thumb-actions .richtext-btn {
+    @apply border-0 bg-white/90 px-1.5 py-0.5;
+  }
+  .gallery-thumb-badge {
+    @apply absolute left-1 top-1 rounded bg-forest px-1.5 py-0.5 text-[0.65rem] font-semibold text-cream-2;
+  }
+
+  .media-modal-root {
+    @apply fixed inset-0 z-[80] flex items-center justify-center p-4;
+  }
+  .media-modal-backdrop {
+    @apply absolute inset-0 bg-forest-dark/50;
+  }
+  .media-modal {
+    @apply relative z-10 flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft;
+  }
+  .media-modal-grid {
+    @apply grid max-h-[50vh] grid-cols-2 gap-3 overflow-y-auto sm:grid-cols-3 md:grid-cols-4;
+  }
+  .media-modal-item {
+    @apply flex flex-col overflow-hidden rounded-md border border-line bg-cream/40 text-left transition hover:border-forest;
+  }
+  .media-modal-item img {
+    @apply aspect-square w-full object-cover;
+  }
+  .media-modal-pdf {
+    @apply flex aspect-square items-center justify-center bg-cream text-sm font-semibold text-muted;
+  }
+  .media-modal-name {
+    @apply truncate px-2 py-1.5 text-xs text-muted;
+  }
+
+  .media-grid {
+    @apply grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5;
+  }
+  .media-grid-card {
+    @apply overflow-hidden rounded-lg border border-line bg-white shadow-soft;
+  }
+  .media-grid-card img {
+    @apply aspect-square w-full object-cover;
+  }
+
+  .filter-tabs {
+    @apply mb-4 flex flex-wrap gap-2;
+  }
+  .filter-tab {
+    @apply inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-semibold text-muted no-underline transition hover:bg-cream;
+  }
+  .filter-tab-active {
+    @apply bg-forest text-cream-2 hover:bg-forest;
+  }
+  .filter-tab-count {
+    @apply rounded-full bg-black/10 px-1.5 py-0.5 text-[0.7rem] font-bold leading-none tabular-nums;
+  }
+  .filter-tab-active .filter-tab-count {
+    @apply bg-white/20 text-cream-2;
+  }
+
+  /* Messages inbox */
+  .msg-inbox {
+    @apply grid gap-4 lg:grid-cols-[minmax(16rem,22rem)_minmax(0,1fr)] lg:items-start;
+  }
+  .msg-list-pane,
+  .msg-detail-pane {
+    @apply p-0 overflow-hidden;
+  }
+  .msg-list-pane {
+    @apply flex max-h-[min(78vh,44rem)] flex-col;
+  }
+  .msg-search {
+    @apply border-b border-line p-3;
+  }
+  .msg-list {
+    @apply flex-1 overflow-y-auto;
+  }
+  .msg-row {
+    @apply flex w-full cursor-pointer flex-col gap-0.5 border-b border-line px-3.5 py-3 text-left transition;
+    background: transparent;
+  }
+  .msg-row:hover {
+    @apply bg-cream;
+  }
+  .msg-row.is-active {
+    @apply bg-cream-2;
+    box-shadow: inset 3px 0 0 var(--color-gold, #c9963f);
+  }
+  .msg-row.is-unread .msg-row-name,
+  .msg-row.is-unread .msg-row-subject {
+    @apply font-bold text-forest;
+  }
+  .msg-row-top {
+    @apply flex items-baseline justify-between gap-2;
+  }
+  .msg-row-name {
+    @apply truncate text-sm font-semibold text-forest;
+  }
+  .msg-row-date {
+    @apply shrink-0 text-[0.7rem] text-muted;
+  }
+  .msg-row-subject {
+    @apply truncate text-sm text-ink;
+  }
+  .msg-row-preview {
+    @apply line-clamp-2 text-xs text-muted;
+  }
+  .msg-empty {
+    @apply m-0 px-4 py-8 text-center text-sm text-muted;
+  }
+  .msg-detail {
+    @apply flex min-h-[24rem] flex-col;
+  }
+  .msg-detail-head {
+    @apply border-b border-line px-5 py-4;
+  }
+  .msg-detail-title-row {
+    @apply mb-3 flex flex-wrap items-start justify-between gap-2;
+  }
+  .msg-detail-subject {
+    @apply m-0 max-w-[40rem] text-xl font-semibold text-forest text-balance;
+  }
+  .msg-detail-meta {
+    @apply flex flex-wrap items-end justify-between gap-3;
+  }
+  .msg-detail-from {
+    @apply text-sm font-semibold text-ink;
+  }
+  .msg-detail-contacts {
+    @apply text-sm text-muted;
+  }
+  .msg-detail-contacts a {
+    @apply text-forest no-underline hover:underline;
+  }
+  .msg-detail-when {
+    @apply text-xs text-muted;
+  }
+  .msg-detail-body {
+    @apply flex-1 whitespace-pre-wrap px-5 py-5 text-sm leading-relaxed text-ink;
+  }
+  .msg-detail-actions {
+    @apply flex flex-wrap items-center gap-2 border-t border-line bg-cream/60 px-5 py-3;
+  }
+  .msg-quick-form {
+    @apply m-0 inline;
+  }
+  .sr-only {
+    @apply absolute h-px w-px overflow-hidden whitespace-nowrap;
+    clip: rect(0, 0, 0, 0);
+  }
+  [x-cloak] {
+    display: none !important;
+  }
+
+  /* Bookings detail extras */
+  .bk-facts {
+    @apply grid gap-3 border-b border-line px-5 py-4 sm:grid-cols-2;
+  }
+  .bk-fact {
+    @apply flex flex-col gap-0.5;
+  }
+  .bk-fact-label {
+    @apply text-[0.7rem] font-bold uppercase tracking-wide text-gold;
+  }
+  .bk-fact-value {
+    @apply text-sm font-semibold text-forest;
+  }
+  .bk-fact-sub {
+    @apply text-xs text-muted;
+  }
+  .bk-msg-label {
+    @apply mb-2 text-[0.7rem] font-bold uppercase tracking-wide text-muted;
+  }
+  .bk-edit {
+    @apply border-t border-line;
+  }
+  .bk-edit-grid {
+    @apply grid gap-3 px-5 py-4;
+  }
+  .bk-notes {
+    @apply sm:col-span-1;
+  }
+  .bk-mail-bar {
+    @apply flex flex-wrap items-center justify-between gap-2 border-t border-line px-5 py-3;
+  }
+  .bk-mail-status {
+    @apply text-xs font-semibold;
+  }
+  .bk-mail-status.is-ok {
+    @apply text-forest;
+  }
+  .bk-mail-status.is-warn {
+    @apply text-danger;
+  }
+}

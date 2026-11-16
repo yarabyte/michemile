@@ -1,0 +1,5 @@
+-- Installation manuelle (phpMyAdmin ne comprend pas toujours SOURCE) :
+-- 1) Importer schema.sql
+-- 2) Importer seeds/roles.sql
+-- 3) CLI : php bin/seed-admin.php --email=... --password=...
+-- 4) CLI : php bin/import-content.php

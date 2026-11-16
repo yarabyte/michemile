@@ -1,0 +1,481 @@
+{
+    "site": {
+        "name": "Les Résidences hôtelières Micheline & Emile",
+        "short_name": "Micheline & Emile",
+        "city": "Yaoundé",
+        "district": "Bastos",
+        "email_booking": "booking@michemil.com",
+        "phone": "+237 653 29 02 58 / 222 20 86 71",
+        "whatsapp": "237653290258",
+        "brand_colors": {
+            "forest": "#1F3A2E",
+            "forest_dark": "#0B2414",
+            "gold": "#C9963F",
+            "gold_light": "#E2B86B",
+            "cream": "#FBF8F3",
+            "cream_deep": "#F3EDE3",
+            "ink": "#1D1B18",
+            "terracotta": "#A3442A",
+            "whatsapp": "#25D366"
+        },
+        "email": "booking@michemil.com"
+    },
+    "rooms": [
+        {
+            "slug": "suite-executive",
+            "cat": "suites",
+            "catLabel": "Suite",
+            "name": "Suite Exécutive",
+            "cap": 2,
+            "area": 100,
+            "price": 85000,
+            "from": false,
+            "img": "/assets/img/content/WhatsApp-Image-2026-06-23-at-11.33.48-600x450.jpeg",
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-06-23-at-11.33.48-960x1080.jpeg",
+                "/assets/img/content/suiteexec-800x800.jpeg",
+                "/assets/img/content/WhatsApp-Image-2026-06-23-at-11.33.48-1-800x800.jpeg"
+            ],
+            "short": "Raffinement, élégance, délicatesse, espace, sont autant de mots qui viennent à l’esprit pour évoquer cette Suite de charme et de romance, le « net plus ultra » de la Résidence.",
+            "long": [
+                "Raffinement, élégance, délicatesse, espace, sont autant de mots qui viennent à l’esprit pour évoquer cette Suite de charme et de romance, le « net plus ultra » de la Résidence. Votre Suite Exécutive est dotée d’une chambre à coucher avec une salle de bain privative équipée d’une colonne hydromassante dorée. Le vaste salon et son mobilier chic, achèveront de vous convaincre. Vous pourrez y apprécier les chaînes CANAL+ sur un écran plat, dans un salon en cuir de 5 places aux couleurs sobres et chaleureuses. La salle à manger avec ses dorures de charmes, vous permettra de recevoir vos convives. Vous bénéficierez par ailleurs d’une grande cuisine bien équipée pour les amateurs de petits plats faits-maison, avec la possibilité de mobiliser les services d’un chef attitré le temps de votre séjour. Un débarras et une buanderie dotée d’une machine à laver, sublimeront votre sensation de parfaite autonomie, avec les services d’un établissement hôtelier en sus.",
+                "La belle et grande terrasse meublée, accessible depuis le salon ou la chambre, est une invitation à la relaxation et au farniente, avec une vue imprenable sur la ville de Yaoundé et ses collines verdoyantes, avec une vue au lointain sur le Palais présidentiel d’Etoudi…"
+            ],
+            "beds": "160x190",
+            "bedrooms": 1,
+            "baths": 1,
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ],
+                [
+                    "Étage",
+                    "1e et 2e"
+                ],
+                [
+                    "Vue",
+                    "Vue sur la ville"
+                ]
+            ],
+            "equip": [
+                [
+                    "sofa",
+                    "Salon"
+                ],
+                [
+                    "dining",
+                    "Salle à manger"
+                ],
+                [
+                    "kitchen",
+                    "Cuisine équipée"
+                ],
+                [
+                    "washer",
+                    "Machine à laver"
+                ],
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "phone",
+                    "Téléphone"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ],
+                [
+                    "sun",
+                    "Terrasse meublée"
+                ]
+            ]
+        },
+        {
+            "slug": "suite-superieure",
+            "cat": "suites",
+            "catLabel": "Suite",
+            "name": "Suite Supérieure",
+            "cap": 2,
+            "area": 100,
+            "price": 75000,
+            "from": false,
+            "img": "/assets/img/content/WhatsApp-Image-2026-02-02-at-18.30.50-2-600x450.jpeg",
+            "short": "En hauteur, les Suites Supérieures se distinguent par une vue imprenable sur le quartier Bastos et/ou la ville de Yaoundé.",
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ],
+                [
+                    "Vue",
+                    "Bastos et/ou la ville"
+                ]
+            ],
+            "equip": [
+                [
+                    "eye",
+                    "Vue sur Bastos / la ville"
+                ],
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ]
+            ],
+            "long": [
+                "En hauteur, les Suites Supérieures se distinguent par une vue imprenable sur le quartier Bastos et/ou la ville de Yaoundé."
+            ],
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-02-02-at-18.30.50-2-600x450.jpeg"
+            ]
+        },
+        {
+            "slug": "appartement-deluxe",
+            "cat": "apparts",
+            "catLabel": "Appartement",
+            "name": "Appartement Deluxe",
+            "cap": 4,
+            "area": 120,
+            "price": 65000,
+            "from": true,
+            "img": "/assets/img/content/WhatsApp-Image-2026-01-31-at-23.04.51-600x450.jpeg",
+            "short": "Les Appartements Deluxe disposent de 2 chambres à coucher équipées chacune d’une salle de bain privative. L'ensemble est finement décoré et parfaitement équipé.",
+            "bedrooms": 2,
+            "baths": 2,
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ]
+            ],
+            "equip": [
+                [
+                    "bed",
+                    "2 chambres à coucher"
+                ],
+                [
+                    "bath",
+                    "2 salles de bain privatives"
+                ],
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ]
+            ],
+            "long": [
+                "Les Appartements Deluxe disposent de 2 chambres à coucher équipées chacune d’une salle de bain privative. L'ensemble est finement décoré et parfaitement équipé."
+            ],
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-01-31-at-23.04.51-600x450.jpeg"
+            ]
+        },
+        {
+            "slug": "appartement-superieur",
+            "cat": "apparts",
+            "catLabel": "Appartement",
+            "name": "Appartement Supérieur",
+            "cap": 4,
+            "area": 120,
+            "price": 55000,
+            "from": true,
+            "img": "/assets/img/content/WhatsApp-Image-2026-02-01-at-21.28.53-14-600x450.jpeg",
+            "short": "Avec ses 2 Chambres, l'Appartement Supérieur est un compromis idéal pour vos voyages d’affaires en équipe, ou vos séjours économiques à plusieurs.",
+            "bedrooms": 2,
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ]
+            ],
+            "equip": [
+                [
+                    "bed",
+                    "2 chambres à coucher"
+                ],
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ]
+            ],
+            "long": [
+                "Avec ses 2 Chambres, l'Appartement Supérieur est un compromis idéal pour vos voyages d’affaires en équipe, ou vos séjours économiques à plusieurs."
+            ],
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-02-01-at-21.28.53-14-600x450.jpeg"
+            ]
+        },
+        {
+            "slug": "chambre-double-deluxe",
+            "cat": "chambres",
+            "catLabel": "Chambre",
+            "name": "Chambre Double Deluxe",
+            "cap": 2,
+            "area": 25,
+            "price": 50000,
+            "from": false,
+            "img": "/assets/img/content/WhatsApp-Image-2026-06-23-at-13.14.03-1-600x450.jpeg",
+            "short": "Une chambre aux dimensions impressionnantes, qui donne sur un balcon généreux. Elle est dotée d'équipements pratiques pour les travailleurs en mission.",
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ]
+            ],
+            "equip": [
+                [
+                    "sun",
+                    "Balcon"
+                ],
+                [
+                    "desk",
+                    "Équipement affaires"
+                ],
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ]
+            ],
+            "long": [
+                "Une chambre aux dimensions impressionnantes, qui donne sur un balcon généreux. Elle est dotée d'équipements pratiques pour les travailleurs en mission."
+            ],
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-06-23-at-13.14.03-1-600x450.jpeg"
+            ]
+        },
+        {
+            "slug": "chambre-double-confort",
+            "cat": "chambres",
+            "catLabel": "Chambre",
+            "name": "Chambre Double Confort",
+            "cap": 2,
+            "area": 17,
+            "price": 45000,
+            "from": false,
+            "img": "/assets/img/content/WhatsApp-Image-2026-06-23-at-13.14.00-2-600x450.jpeg",
+            "short": "Coquette, cette chambre est le parfait compromis pour un séjour classique de travail ou de charme, avec toutes les commodités à proximité.",
+            "practical": [
+                [
+                    "Check-in",
+                    "14h"
+                ],
+                [
+                    "Check-out",
+                    "12h"
+                ]
+            ],
+            "equip": [
+                [
+                    "tv",
+                    "TV et chaînes Canal+"
+                ],
+                [
+                    "snow",
+                    "Climatiseurs"
+                ],
+                [
+                    "wifi",
+                    "Internet gratuit"
+                ]
+            ],
+            "long": [
+                "Coquette, cette chambre est le parfait compromis pour un séjour classique de travail ou de charme, avec toutes les commodités à proximité."
+            ],
+            "gallery": [
+                "/assets/img/content/WhatsApp-Image-2026-06-23-at-13.14.00-2-600x450.jpeg"
+            ]
+        }
+    ],
+    "restaurants": [
+        {
+            "slug": "bbl",
+            "name": "Le Bluebird Lounge",
+            "abbr": "BBL",
+            "tagline": "Cuisine camerounaise, africaine et internationale",
+            "img": "/assets/img/content/WhatsApp-Image-2026-06-30-at-00.00.54.jpeg",
+            "desc": "Le Bluebird Lounge est un espace élégant et raffiné, pensé pour vous offrir une expérience unique. Espace polyvalent, il peut également servir à l'organisation d'événements privatifs ou non, de séminaires, ateliers et conférences. Il est par ailleurs dédié à la promotion de talents artistiques (musique, danse, art contemporain, etc.). Sa mythique cave à vins vaut le détour!",
+            "hours": "À partir de 7h",
+            "hoursShort": "Dès 7h",
+            "specialties": [
+                "Cuisine camerounaise",
+                "Cuisine africaine",
+                "Cuisine internationale",
+                "Cave à vins"
+            ],
+            "features": [
+                "Événements privatifs ou non",
+                "Séminaires, ateliers et conférences",
+                "Talents artistiques : musique, danse, art contemporain"
+            ]
+        },
+        {
+            "slug": "jdl",
+            "name": "Les Jardins de Lym",
+            "abbr": "JDL",
+            "tagline": "Grillades et pizzas au feu de bois",
+            "img": "/assets/img/content/JDL.png",
+            "gallery": [
+                "/assets/img/content/JDL.png",
+                "/assets/img/content/JDL1.jpeg"
+            ],
+            "desc": "Grillades et pizzas au feu de bois servies au bord de la piscine et de cascades. Espace de travail en journée (mobilier de jardin, prises électriques et wifi disponibles), animation possibles en soirée. Piscine ouverte 24H/24 pour les résidents, et à partir de 15h pour les visiteurs.",
+            "hours": "À partir de 14h (la piscine est accessible 24h/24)",
+            "hoursShort": "Dès 14h · piscine 24h/24",
+            "specialties": [
+                "Grillades au feu de bois",
+                "Pizzas au feu de bois"
+            ],
+            "features": [
+                "Au bord de la piscine et des cascades",
+                "Espace de travail en journée",
+                "Animations possibles en soirée"
+            ]
+        },
+        {
+            "slug": "dcc",
+            "name": "Le Demgne Coffee Club",
+            "abbr": "DCC",
+            "tagline": "Sélection de sandwichs maison, végétariens, de bœuf, poulet ou porc",
+            "img": "/assets/img/content/IMG_0428-1090x1080.jpg",
+            "desc": "Le Demgne Coffee Club (DCC) est un espace chaleureux où authenticité, convivialité et simplicité se rencontrent. Les plus pressés pourront y déguster une sélection de sandwichs maison, servis sur le pouce, avec un jus naturel, un thé ou un café. C'est également un espace de coworking doté de nombreuses prises électriques, et disposant d'un accès Internet par Wifi et par câble pour les plus exigeants.",
+            "hours": "10h–22h",
+            "hoursShort": "10h–22h",
+            "specialties": [
+                "Sandwichs maison",
+                "Jus naturels",
+                "Thés et cafés"
+            ],
+            "features": [
+                "Espace de coworking",
+                "Wifi et Internet par câble",
+                "Nombreuses prises électriques"
+            ]
+        }
+    ],
+    "spa": [
+        {
+            "slug": "babys",
+            "title": "Le Baby’s SPA, beauty and care",
+            "img": "/assets/img/content/Massage6.jpg",
+            "lead": "Au Rez-de-chaussée, l’Espace Bien-Être « The Baby’s SPA, Beauty and Care » vous propose un moment de détente pour le corps et l’esprit.",
+            "paras": [
+                "Au Rez-de-chaussée, l’Espace Bien-Être « The Baby’s SPA, Beauty and Care » vous propose un moment de détente pour le corps et l’esprit. Entre Massages, Hammam et soins divers, vous y trouverez votre compte. Vivez un grand moment de relaxation, laissez-vous cocooner et envahir, dans une bulle de calme et de plaisir…",
+                "A partir de 10,000FCFA, venez profiter de nos six (6) rituels bien-être: « Voile d’Orient », « Escale marocaine », « Rêve des mille et une nuits », « Harmonie zen », « Dos délice », et « Prestige impérial »…",
+                "Vous pourrez également y bénéficier de nos trois (3) soins signature, à partir de 15,000FCFA: « Eclat sublime », « Mains de satin », et « Pieds de soie »…"
+            ],
+            "blocks": [
+                {
+                    "title": "Rituels bien-être",
+                    "note": "dès 10 000 FCFA",
+                    "items": [
+                        "Voile d’Orient",
+                        "Escale marocaine",
+                        "Rêve des mille et une nuits",
+                        "Harmonie zen",
+                        "Dos délice",
+                        "Prestige impérial"
+                    ]
+                },
+                {
+                    "title": "Soins signature",
+                    "note": "dès 15 000 FCFA",
+                    "items": [
+                        "Eclat sublime",
+                        "Mains de satin",
+                        "Pieds de soie"
+                    ]
+                }
+            ],
+            "ctaLabel": "Réserver un soin"
+        },
+        {
+            "slug": "piscine",
+            "title": "La piscine et les cascades des Jardins de Lym",
+            "img": "/assets/img/content/JDL1.jpeg",
+            "lead": "Les Jardins de Lym sont un espace de bien-être et de relaxation par excellence, avec sa piscine et ses cascades.",
+            "paras": [
+                "Les Jardins de Lym sont un espace de bien-être et de relaxation par excellence, avec sa piscine et ses cascades. Vous pourrez y savourer des grillades et pizzas au feu de bois, servies au bord de la piscine ou des cascades d’eau à partir de 14h.",
+                "Les résidents pourront profiter librement et gratuitement de la piscine et de sa cascade d’eau attenante, 7 jours/7 et 24h/24. Moyennant le règlement d’un droit d’entrée, la piscine est accessible aux visiteurs à partir de 15h du lundi au vendredi, et toute la journée les samedi et dimanche.",
+                "Un espace VIP, doté d’une série de trois cascade d’eaux murales, est disponible. Il peut-être privatisé à la demande.",
+                "L’espace dispose dans son ensemble d’un accès au wifi et de prises électriques idéalement positionnées, qui en font par ailleurs un espace de travail en plein air. Une tranquillité parfaite y est assurée en journée."
+            ],
+            "blocks": [
+                {
+                    "title": "Accès à la piscine",
+                    "note": "",
+                    "items": [
+                        "Résidents : gratuit, 7j/7 et 24h/24",
+                        "Visiteurs : dès 15h du lundi au vendredi",
+                        "Visiteurs : toute la journée samedi et dimanche"
+                    ]
+                },
+                {
+                    "title": "Espace VIP",
+                    "note": "privatisable",
+                    "items": [
+                        "Trois cascades d’eau murales",
+                        "Privatisation à la demande"
+                    ]
+                }
+            ],
+            "ctaLabel": "Privatiser l’espace VIP"
+        }
+    ]
+}

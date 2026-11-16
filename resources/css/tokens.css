@@ -1,0 +1,24 @@
+@theme {
+  --color-forest: #1f3a2e;
+  --color-forest-dark: #0b2414;
+  --color-forest-mid: #2a4a3b;
+  --color-gold: #c9963f;
+  --color-gold-light: #e2b86b;
+  --color-cream: #fbf8f3;
+  --color-cream-2: #f3ede3;
+  --color-cream-3: #ede6d8;
+  --color-ink: #1d1b18;
+  --color-muted: #5a544b;
+  --color-terracotta: #a3442a;
+  --color-line: #e1d7c6;
+  --color-danger: #a3261c;
+  --color-ok: #2a4a3b;
+  --color-whatsapp: #25d366;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --shadow-soft: 0 1px 2px rgb(29 27 24 / 0.04), 0 8px 24px rgb(29 27 24 / 0.06);
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,46 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../../app/Views/layouts/main.php";
+@source "../../app/Views/public/**/*.php";
+@source "../../app/Views/components/**/*.php";
+@import "./tokens.css";
+@import "./site-legacy.css" layer(components);
+
+@layer components {
+  .site-header.is-scrolled {
+    box-shadow: 0 10px 28px rgb(0 0 0 / 0.28);
+  }
+
+  .btn:focus-visible,
+  .nav a:focus-visible,
+  .nav-toggle:focus-visible,
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-gold, #c9963f);
+    outline-offset: 2px;
+  }
+
+  .section-head h2,
+  .hero h1 {
+    text-wrap: balance;
+  }
+
+  .feature-card,
+  .resto-card {
+    transition: transform 0.4s var(--ease-out-expo, cubic-bezier(0.22, 1, 0.36, 1)),
+      opacity 0.7s var(--ease-out-expo, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  .feature-card:hover,
+  .resto-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .cta-band .cta-primary {
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.22);
+  }
+}

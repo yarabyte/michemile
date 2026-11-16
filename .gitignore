@@ -1,0 +1,15 @@
+/.env
+/node_modules/
+/vendor/
+/storage/logs/*
+/storage/cache/*
+/storage/sessions/*
+/storage/tmp/*
+/public/uploads/*
+!/public/uploads/.htaccess
+!/storage/logs/.gitkeep
+!/storage/cache/.gitkeep
+!/storage/sessions/.gitkeep
+!/storage/tmp/.gitkeep
+.DS_Store
+*.log

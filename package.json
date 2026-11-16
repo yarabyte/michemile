@@ -1,0 +1,20 @@
+{
+  "name": "michemil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Les Résidences hôtelières Micheline & Emile — assets CSS (Tailwind)",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "dev:site": "tailwindcss -i ./resources/css/site.css -o ./public/assets/css/site.css --watch",
+    "dev:admin": "tailwindcss -i ./resources/css/admin.css -o ./public/assets/css/admin.css --watch",
+    "build": "npm run build:site && npm run build:admin",
+    "build:site": "tailwindcss -i ./resources/css/site.css -o ./public/assets/css/site.css --minify",
+    "build:admin": "tailwindcss -i ./resources/css/admin.css -o ./public/assets/css/admin.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "tinymce": "^7.9.3",
+    "tinymce-i18n": "^26.11.2"
+  }
+}

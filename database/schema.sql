@@ -1,0 +1,231 @@
+-- Micheline & Emile — schéma MySQL 8
+-- Charset utf8mb4, InnoDB
+SET NAMES utf8mb4;
+SET time_zone = '+00:00';
+
+CREATE TABLE IF NOT EXISTS roles (
+  id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(50) NOT NULL UNIQUE,
+  name VARCHAR(100) NOT NULL,
+  permissions JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  role_id TINYINT UNSIGNED NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(120) NOT NULL,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  totp_secret VARCHAR(64) NULL,
+  totp_enabled TINYINT(1) NOT NULL DEFAULT 0,
+  last_login_at DATETIME NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_users_role FOREIGN KEY (role_id) REFERENCES roles(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS login_attempts (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  ip_address VARCHAR(45) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  attempted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  success TINYINT(1) NOT NULL DEFAULT 0,
+  INDEX idx_login_ip_email_time (ip_address, email, attempted_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS media (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  disk_path VARCHAR(255) NOT NULL,
+  public_path VARCHAR(255) NOT NULL,
+  original_name VARCHAR(255) NOT NULL,
+  mime VARCHAR(100) NOT NULL,
+  width INT UNSIGNED NULL,
+  height INT UNSIGNED NULL,
+  size_bytes INT UNSIGNED NOT NULL,
+  alt_fr VARCHAR(255) NULL,
+  alt_en VARCHAR(255) NULL,
+  created_by INT UNSIGNED NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_media_user FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS settings (
+  setting_key VARCHAR(100) PRIMARY KEY,
+  setting_value LONGTEXT NULL,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS translations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  locale CHAR(2) NOT NULL,
+  group_key VARCHAR(80) NOT NULL,
+  item_key VARCHAR(120) NOT NULL,
+  value TEXT NOT NULL,
+  UNIQUE KEY uq_tr (locale, group_key, item_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS accommodations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  category ENUM('suites','apparts','chambres') NOT NULL,
+  name_fr VARCHAR(180) NOT NULL,
+  name_en VARCHAR(180) NOT NULL,
+  short_fr TEXT NOT NULL,
+  short_en TEXT NULL,
+  body_fr MEDIUMTEXT NOT NULL,
+  body_en MEDIUMTEXT NULL,
+  capacity TINYINT UNSIGNED NOT NULL DEFAULT 2,
+  area_m2 SMALLINT UNSIGNED NOT NULL,
+  bedrooms TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  bathrooms TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  beds VARCHAR(80) NULL,
+  price_fcfa INT UNSIGNED NOT NULL,
+  price_from TINYINT(1) NOT NULL DEFAULT 0,
+  cover_media_id INT UNSIGNED NULL,
+  practical_json JSON NULL,
+  equipment_json JSON NULL,
+  gallery_json JSON NULL,
+  meta_title_fr VARCHAR(180) NULL,
+  meta_title_en VARCHAR(180) NULL,
+  meta_desc_fr VARCHAR(300) NULL,
+  meta_desc_en VARCHAR(300) NULL,
+  is_published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_acc_cover FOREIGN KEY (cover_media_id) REFERENCES media(id) ON DELETE SET NULL,
+  INDEX idx_acc_cat (category, is_published, sort_order)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS restaurants (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  legacy_slug VARCHAR(120) NULL,
+  name_fr VARCHAR(180) NOT NULL,
+  name_en VARCHAR(180) NOT NULL,
+  abbr VARCHAR(20) NULL,
+  tagline_fr VARCHAR(255) NULL,
+  tagline_en VARCHAR(255) NULL,
+  body_fr MEDIUMTEXT NOT NULL,
+  body_en MEDIUMTEXT NULL,
+  hours_fr VARCHAR(180) NULL,
+  hours_en VARCHAR(180) NULL,
+  specialties_json JSON NULL,
+  features_json JSON NULL,
+  cover_media_id INT UNSIGNED NULL,
+  menu_media_id INT UNSIGNED NULL,
+  image_url VARCHAR(500) NULL,
+  meta_title_fr VARCHAR(180) NULL,
+  meta_title_en VARCHAR(180) NULL,
+  meta_desc_fr VARCHAR(300) NULL,
+  meta_desc_en VARCHAR(300) NULL,
+  is_published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_resto_cover FOREIGN KEY (cover_media_id) REFERENCES media(id) ON DELETE SET NULL,
+  CONSTRAINT fk_resto_menu FOREIGN KEY (menu_media_id) REFERENCES media(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS spa_pages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  legacy_path VARCHAR(180) NULL,
+  title_fr VARCHAR(180) NOT NULL,
+  title_en VARCHAR(180) NOT NULL,
+  lead_fr TEXT NOT NULL,
+  lead_en TEXT NULL,
+  body_fr MEDIUMTEXT NOT NULL,
+  body_en MEDIUMTEXT NULL,
+  blocks_json JSON NULL,
+  cta_label_fr VARCHAR(120) NULL,
+  cta_label_en VARCHAR(120) NULL,
+  cover_media_id INT UNSIGNED NULL,
+  image_url VARCHAR(500) NULL,
+  meta_title_fr VARCHAR(180) NULL,
+  meta_title_en VARCHAR(180) NULL,
+  meta_desc_fr VARCHAR(300) NULL,
+  meta_desc_en VARCHAR(300) NULL,
+  is_published TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_spa_cover FOREIGN KEY (cover_media_id) REFERENCES media(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS home_sections (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  section_key VARCHAR(80) NOT NULL UNIQUE,
+  title_fr VARCHAR(180) NULL,
+  title_en VARCHAR(180) NULL,
+  subtitle_fr VARCHAR(255) NULL,
+  subtitle_en VARCHAR(255) NULL,
+  body_fr MEDIUMTEXT NULL,
+  body_en MEDIUMTEXT NULL,
+  media_id INT UNSIGNED NULL,
+  extra_json JSON NULL,
+  is_enabled TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_home_media FOREIGN KEY (media_id) REFERENCES media(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS bookings (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  reference VARCHAR(20) NOT NULL UNIQUE,
+  accommodation_id INT UNSIGNED NULL,
+  status ENUM('new','confirmed','cancelled','completed') NOT NULL DEFAULT 'new',
+  guest_name VARCHAR(150) NOT NULL,
+  guest_email VARCHAR(190) NOT NULL,
+  guest_phone VARCHAR(60) NOT NULL,
+  check_in DATE NOT NULL,
+  check_out DATE NOT NULL,
+  guests TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  message TEXT NULL,
+  locale CHAR(2) NOT NULL DEFAULT 'fr',
+  ip_address VARCHAR(45) NULL,
+  user_agent VARCHAR(255) NULL,
+  admin_notes TEXT NULL,
+  notified_at DATETIME NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_booking_acc FOREIGN KEY (accommodation_id) REFERENCES accommodations(id) ON DELETE SET NULL,
+  INDEX idx_booking_status (status, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS messages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  status ENUM('new','read','archived') NOT NULL DEFAULT 'new',
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(60) NULL,
+  subject VARCHAR(200) NULL,
+  body TEXT NOT NULL,
+  locale CHAR(2) NOT NULL DEFAULT 'fr',
+  ip_address VARCHAR(45) NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_msg_status (status, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS activity_log (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NULL,
+  action VARCHAR(80) NOT NULL,
+  entity_type VARCHAR(80) NULL,
+  entity_id INT UNSIGNED NULL,
+  ip_address VARCHAR(45) NULL,
+  meta_json JSON NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_log_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  INDEX idx_log_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS redirects (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  from_path VARCHAR(255) NOT NULL UNIQUE,
+  to_path VARCHAR(255) NOT NULL,
+  status_code SMALLINT UNSIGNED NOT NULL DEFAULT 301,
+  is_active TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
